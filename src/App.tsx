@@ -44,6 +44,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { resumeData, ResumeData } from "./data/resume";
 import DevConsole from "./components/DevConsole";
 
+const resumeFileName = "Anuska_Dasgupta_Resume.pdf";
+
 const publicAsset = (path: string) =>
   `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
@@ -510,6 +512,14 @@ export default function App() {
     ==================================================================
   */
   const downloadResume = () => {
+    const link = document.createElement("a");
+    link.href = publicAsset(resumeFileName);
+    link.setAttribute("download", resumeFileName);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    return;
+
     if (customResumeExists) {
       const link = document.createElement("a");
       link.href = "/api/resume/download";
