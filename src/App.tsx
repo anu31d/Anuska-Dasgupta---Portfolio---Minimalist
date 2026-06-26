@@ -224,7 +224,7 @@ export default function App() {
        falls back to the custom designed interactive SVG matrix avatar.
     ==================================================================
   */
-  const [profilePhotoSrc] = useState("/images/profile-photo.jpg");
+  const [profilePhotoSrc] = useState("/images/profile-photo.png");
   const [profilePhotoError, setProfilePhotoError] = useState(false);
 
   /*
@@ -260,223 +260,222 @@ export default function App() {
     ==================================================================
   */
   const galleryItems = [
-    {
-      id: "award_speech",
-      title: "1st Place – SRMIST Ramapuram Oratorical Contest",
-      description: "Delivering the championship keynote address. Public presentation has defined her core development philosophy: 'If you cannot articulate what you built, you have not finished building it!'",
-      image: "/images/award-speech-competition.jpg",
-      tag: "Speaking",
-      date: "Sep 2023",
-      fallback: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "award_saram",
-      title: "2nd Prize – SARAM Expo 2025 ('Mann AI')",
-      description: "Receiving the 2nd Prize (Rs. 25,000) for 'Mann AI' mental health platform. The system uses personality-adaptive NLP models customized across 64 psychological profiles.",
-      image: "/images/award-saram-expo.jpg",
-      tag: "Competition",
-      date: "Jan 2025",
-      fallback: "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "award_oral",
-      title: "2nd Place – National Oral Research Presentation",
-      description: "Recognized for presenting high-throughput architecture designs and interpretable analytical pipelines at the college-wide research symposium.",
-      image: "/images/award-oral-presentation.jpg",
-      tag: "Research",
-      date: "Oct 2023",
-      fallback: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_project_day",
-      title: "CryptoGuard OHLCV Pipeline at Project Day",
-      description: "Demonstrating the 99.54% accurate cryptocurrency decision tree risk classifier to panel evaluators at SRM Ramapuram Project Day exhibition.",
-      image: "/images/gallery-project-day.jpg",
-      tag: "Competition",
-      date: "May 2026",
-      fallback: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_winning_project_day",
-      title: "Award-Winning Team at Project Day",
-      description: "Standing with the project team after winning top honours for development and design of robust interpretability systems.",
-      image: "/images/gallery-winning-project-day.jpg",
-      tag: "Competition",
-      date: "May 2026",
-      fallback: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_texus_speaker",
-      title: "Invited Guest Speaker – Texus National Tech Fest",
-      description: "Presenting to junior engineering batches on standard web API patterns, secure routing architectures, and database Normalisation concepts.",
-      image: "/images/gallery-texus-speaker.jpg",
-      tag: "Speaking",
-      date: "Mar 2025",
-      fallback: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_promptkraft_speaker",
-      title: "Keynote Speaker – PromptKraft Developer Workshop",
-      description: "Leading a practical training session on structure-bounded LLM development, prompt-injection defense mechanisms, and sentiment-aware UX designs.",
-      image: "/images/gallery-promptkraft-speaker.jpg",
-      tag: "Speaking",
-      date: "Apr 2025",
-      fallback: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_web_dev_speaker",
-      title: "Lead Instructor – Web Development & API Integration",
-      description: "Teaching high-performance client-side state management, responsive CSS setups, and REST API proxying to junior computer science students.",
-      image: "/images/gallery-web-dev-speaker.jpg",
-      tag: "Speaking",
-      date: "Nov 2024",
-      fallback: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_ai_cyberquest",
-      title: "CyberQuest AI Hackathon - Active Sprints",
-      description: "Deploying Python microservices and training random forest prediction engines live under strict 24-hour hackathon deadlines.",
-      image: "/images/gallery-ai-cyberquest.jpg",
-      tag: "Hackathon",
-      date: "Feb 2025",
-      fallback: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_google_girl_hackathon",
-      title: "Finalist Cohort – Google Girl Hackathon",
-      description: "Invited into the selective cohort. Designed highly scalable backend structures, mock-grounded service layers, and failover pathways.",
-      image: "/images/gallery-google-girl-hackathon.jpg",
-      tag: "Hackathon",
-      date: "Mar 2025",
-      fallback: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_student_interaction",
-      title: "Q&A Discussion – Intellects Club Mentorship",
-      description: "Answering student queries regarding system design paradigms, parameterised SQL, database indexing, and enterprise security policies.",
-      image: "/images/gallery-student-interaction.jpg",
-      tag: "Leadership",
-      date: "Jan 2025",
-      fallback: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_speaker_again",
-      title: "Guest Lecturer – Communicating Technical Solutions",
-      description: "Delivering a seminar on connecting raw analytical code to functional human-centric designs at SRM Ramapuram.",
-      image: "/images/gallery-speaker-again.jpg",
-      tag: "Speaking",
-      date: "Aug 2024",
-      fallback: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_ngo_work",
-      title: "Outreach & Social Campaign - NSS Core",
-      description: "Coordinating a localized welfare distribution campaign. Managing participant database sheets and field coordination tasks.",
-      image: "/images/gallery-ngo-work.jpg",
-      tag: "Volunteering",
-      date: "Jul 2025",
-      fallback: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_with_team",
-      title: "Executive Council – Intellects Club SRM Ramapuram",
-      description: "Collaborating with executive leadership to plan the annual academic calendar and configure industrial bootcamps.",
-      image: "/images/gallery-with-team.jpg",
-      tag: "Leadership",
-      date: "May 2024",
-      fallback: "https://images.unsplash.com/photo-1552581230-c01bc0d48403?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_trophies",
-      title: "Trophies of Academic & Extracurricular Excellence",
-      description: "A selection of undergraduate cups and awards acknowledging performance in tech symposiums, design competitions, and public speaking.",
-      image: "/images/gallery-trophies.jpg",
-      tag: "Competition",
-      date: "2023 - 2026",
-      fallback: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_first_hackathon",
-      title: "First Collegiate Hackathon Experience",
-      description: "Exploring backend structures and database models for real-time applications under intense team-based time constraints.",
-      image: "/images/gallery-first-hackathon.jpg",
-      tag: "Hackathon",
-      date: "Dec 2023",
-      fallback: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_medals",
-      title: "Co-Curricular Debate & Technical Presentation Medals",
-      description: "Celebrating multiple top positions in inter-collegiate oratorical, mock-parliament, and backend design challenges.",
-      image: "/images/gallery-medals.jpg",
-      tag: "Competition",
-      date: "2023 - 2026",
-      fallback: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_receiving_speech_award",
-      title: "Receiving Oratorical Championship First Prize",
-      description: "Receiving the first-place prize on stage. Solidifying a foundational belief in clear, expressive, and compelling technical translation.",
-      image: "/images/gallery-receiving-speech-award.jpg",
-      tag: "Speaking",
-      date: "Sep 2023",
-      fallback: "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_ngo_event",
-      title: "Operational Core – NSS Special Outreach Event",
-      description: "Coordinating logistical setup, medical camps, and community-awareness surveys for over 1,000 campus participants.",
-      image: "/images/gallery-ngo-event.jpg",
-      tag: "Volunteering",
-      date: "Jun 2024",
-      fallback: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_climate_change_speaker",
-      title: "Plenary Speaker – Sustainability & AI Integration",
-      description: "Delivering a keynote address on how machine learning models like EcoPackAI can estimate and predict product CO2 footprints.",
-      image: "/images/gallery-climate-change-speaker.jpg",
-      tag: "Speaking",
-      date: "May 2024",
-      fallback: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_intellects_club",
-      title: "Opening Address – Intellects Club Java Bootcamp",
-      description: "Addressing the incoming students at the flagship computer science bootcamp. Highlighting the balance of algorithm theory and robust practice.",
-      image: "/images/gallery-intellects-club.jpg",
-      tag: "Leadership",
-      date: "Oct 2024",
-      fallback: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_working",
-      title: "Core Backend Sprints & Schema Designing",
-      description: "Developing secure relational schemas, modeling parameterized queries, and tuning Random Forest classifiers in the lab.",
-      image: "/images/gallery-working.jpg",
-      tag: "Engineering",
-      date: "Ongoing",
-      fallback: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_speaking_always",
-      title: "Invited Panelist – Modern AI & API Development",
-      description: "Discussing modern full-stack engineering, API proxy setups, and prompt engineering parameters at a college-wide technical summit.",
-      image: "/images/gallery-speaking-always.jpg",
-      tag: "Speaking",
-      date: "Dec 2025",
-      fallback: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "gallery_launchpad_event",
-      title: "Live Beta Exhibition – 'Mann AI' Launchpad",
-      description: "Demonstrating the CBT-driven mental health platform live. Managing user data sessions and analyzing live engagement feedbacks.",
-      image: "/images/gallery-launchpad-event.jpg",
-      tag: "Competition",
-      date: "Feb 2025",
-      fallback: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
-    }
-  ];
+  {
+    id: "award_speech",
+    title: "1st Place – SRMIST Ramapuram Oratorical Contest",
+    description: "Delivering the championship keynote address. Public presentation has defined her core development philosophy: 'If you cannot articulate what you built, you have not finished building it!'",
+    image: "/images/award-speech-competition.jpg",
+    tag: "Speaking",
+    date: "Sep 2023"
+  },
+
+  {
+    id: "award_saram",
+    title: "2nd Prize – SARAM Expo 2025 ('Mann AI')",
+    description: "Receiving the 2nd Prize (₹25,000) for Mann AI mental health platform.",
+    image: "/images/award-saram-expo.jpg",
+    tag: "Competition",
+    date: "Jan 2025"
+  },
+
+  {
+    id: "award_oral",
+    title: "2nd Place – National Oral Research Presentation",
+    description: "Recognized for presenting research at the college symposium.",
+    image: "/images/award-oral-presentation.jpg",
+    tag: "Research",
+    date: "Oct 2023"
+  },
+
+  {
+    id: "gallery_ai_cyberquest",
+    title: "CyberQuest AI Hackathon",
+    description: "Building AI-powered solutions during the hackathon.",
+    image: "/images/gallery-ai-cyberquest.jpg",
+    tag: "Hackathon",
+    date: "Feb 2025"
+  },
+
+  {
+    id: "gallery_climate_change_speaker",
+    title: "Climate Change Awareness Speaker",
+    description: "Delivering a talk on climate change and sustainability.",
+    image: "/images/gallery-climate-change-speaker.jpg",
+    tag: "Speaking",
+    date: "May 2024"
+  },
+
+  {
+    id: "gallery_first_hackathon",
+    title: "First Hackathon",
+    description: "My first college hackathon experience.",
+    image: "/images/gallery-first-hackathon.jpg",
+    tag: "Hackathon",
+    date: "Dec 2023"
+  },
+
+  {
+    id: "gallery_google_girl_hackathon",
+    title: "Google Girl Hackathon",
+    description: "Participating in Google's Girl Hackathon.",
+    image: "/images/gallery-google-girl-hackathon.jpg",
+    tag: "Hackathon",
+    date: "Mar 2025"
+  },
+
+  {
+    id: "gallery_intellects_club",
+    title: "Intellects Club",
+    description: "Leading events and workshops as Vice President.",
+    image: "/images/gallery-intellects-club.jpg",
+    tag: "Leadership",
+    date: "2024"
+  },
+
+  {
+    id: "gallery_launchpad_event",
+    title: "LaunchPad Event",
+    description: "Presenting the Mann AI platform.",
+    image: "/images/gallery-launchpad-event.jpg",
+    tag: "Competition",
+    date: "Feb 2025"
+  },
+
+  {
+    id: "gallery_medals",
+    title: "Academic & Technical Medals",
+    description: "Collection of medals from competitions.",
+    image: "/images/gallery-medals.jpg",
+    tag: "Achievements",
+    date: "2023–2026"
+  },
+
+  {
+    id: "gallery_ngo_event",
+    title: "NGO Event",
+    description: "Volunteering through NSS.",
+    image: "/images/gallery-ngo-event.jpg",
+    tag: "Volunteering",
+    date: "2024"
+  },
+
+  {
+    id: "gallery_ngo_work",
+    title: "NGO Work",
+    description: "Community outreach and volunteering activities.",
+    image: "/images/gallery-ngo-work.jpg",
+    tag: "Volunteering",
+    date: "2025"
+  },
+
+  {
+    id: "gallery_project_day",
+    title: "Project Day",
+    description: "Presenting the project during Project Day.",
+    image: "/images/gallery-project-day.jpg",
+    tag: "Competition",
+    date: "May 2026"
+  },
+
+  {
+    id: "gallery_promptkraft_speaker",
+    title: "PromptKraft Workshop",
+    description: "Conducting a Prompt Engineering workshop.",
+    image: "/images/gallery-promptkraft-speaker.jpg",
+    tag: "Speaking",
+    date: "Apr 2025"
+  },
+
+  {
+    id: "gallery_receiving_speech_award",
+    title: "Receiving Speech Award",
+    description: "Receiving the first-place oratorical award.",
+    image: "/images/gallery-receiving-speech-award.jpg",
+    tag: "Speaking",
+    date: "Sep 2023"
+  },
+
+  {
+    id: "gallery_speaker_again",
+    title: "Guest Speaker",
+    description: "Delivering another invited technical session.",
+    image: "/images/gallery-speaker-again.jpg",
+    tag: "Speaking",
+    date: "2024"
+  },
+
+  {
+    id: "gallery_speaking_always",
+    title: "Public Speaking",
+    description: "Regular invited talks and seminars.",
+    image: "/images/gallery-speaking-always.jpg",
+    tag: "Speaking",
+    date: "2025"
+  },
+
+  {
+    id: "gallery_student_interaction",
+    title: "Student Interaction",
+    description: "Interacting with students during workshops.",
+    image: "/images/gallery-student-interaction.jpg",
+    tag: "Leadership",
+    date: "2025"
+  },
+
+  {
+    id: "gallery_texus_speaker",
+    title: "Texus Speaker",
+    description: "Speaker at TEXUS technical event.",
+    image: "/images/gallery-texus-speaker.jpg",
+    tag: "Speaking",
+    date: "2025"
+  },
+
+  {
+    id: "gallery_trophies",
+    title: "Trophies",
+    description: "Collection of trophies earned over the years.",
+    image: "/images/gallery-trophies.jpg",
+    tag: "Achievements",
+    date: "2023–2026"
+  },
+
+  {
+    id: "gallery_web_dev_speaker",
+    title: "Web Development Workshop",
+    description: "Teaching Web Development to students.",
+    image: "/images/gallery-web-dev-speaker.jpg",
+    tag: "Speaking",
+    date: "2024"
+  },
+
+  {
+    id: "gallery_winning_project_day",
+    title: "Winning Project Day",
+    description: "Celebrating the Project Day victory.",
+    image: "/images/gallery-winning-project-day.jpg",
+    tag: "Competition",
+    date: "May 2026"
+  },
+
+  {
+    id: "gallery_with_team",
+    title: "With Team",
+    description: "Team photograph with Intellects Club members.",
+    image: "/images/gallery-with-team.jpg",
+    tag: "Leadership",
+    date: "2024"
+  },
+
+  {
+    id: "gallery_working",
+    title: "Working Session",
+    description: "Developing projects and collaborating with the team.",
+    image: "/images/gallery-working.jpg",
+    tag: "Engineering",
+    date: "Ongoing"
+  }
+];
 
   /*
     ==================================================================
