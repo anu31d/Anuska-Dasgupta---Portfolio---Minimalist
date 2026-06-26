@@ -956,19 +956,18 @@ export default function App() {
                 
                 {/* Download Resume Action */}
                 <div className="mt-4">
-                  <button
-                    onClick={downloadResume}
+                  <a
+                    href={publicAsset(resumeFileName)}
+                    download={resumeFileName}
                     className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-neutral-100 text-[10px] font-bold tracking-widest uppercase text-brand-text transition-all duration-300 shadow-sm cursor-pointer group/btn"
                     title="Download PDF Resume"
                   >
                     <Download className="w-3.5 h-3.5 text-brand-muted group-hover/btn:text-brand-text transition-colors" />
                     <span>Get Resume</span>
-                  </button>
-                  {customResumeExists && (
-                    <p className="text-[9px] text-zinc-400 font-mono mt-1.5 ml-1">
-                      ✓ Latest PDF Resume
-                    </p>
-                  )}
+                  </a>
+                  <p className="text-[9px] text-zinc-400 font-mono mt-1.5 ml-1">
+                    Latest PDF Resume
+                  </p>
                 </div>
               </div>
 
