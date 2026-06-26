@@ -44,6 +44,28 @@ import { motion, AnimatePresence } from "motion/react";
 import { resumeData, ResumeData } from "./data/resume";
 import DevConsole from "./components/DevConsole";
 
+const publicAsset = (path: string) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+
+type GalleryItem = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  fallback?: string;
+  tag: string;
+  date: string;
+};
+
+const useFallbackImage = (
+  event: React.SyntheticEvent<HTMLImageElement>,
+  fallback?: string
+) => {
+  if (fallback && event.currentTarget.src !== fallback) {
+    event.currentTarget.src = fallback;
+  }
+};
+
 /*
   ==================================================================
   DEVELOPER NOTE: SKILL PROFICIENCIES & CONTEXTS MAP
@@ -224,7 +246,7 @@ export default function App() {
        falls back to the custom designed interactive SVG matrix avatar.
     ==================================================================
   */
-  const [profilePhotoSrc] = useState("/images/profile-photo.png");
+  const [profilePhotoSrc] = useState(publicAsset("images/profile-photo.png"));
   const [profilePhotoError, setProfilePhotoError] = useState(false);
 
   /*
@@ -259,12 +281,12 @@ export default function App() {
       - fallback: High-quality curated Unsplash placeholder that loads if the local image is not found.
     ==================================================================
   */
-  const galleryItems = [
+  const galleryItems: GalleryItem[] = [
   {
     id: "award_speech",
     title: "1st Place – SRMIST Ramapuram Oratorical Contest",
     description: "Delivering the championship keynote address. Public presentation has defined her core development philosophy: 'If you cannot articulate what you built, you have not finished building it!'",
-    image: "/images/award-speech-competition.jpg",
+    image: publicAsset("images/award-speech-competition.jpg"),
     tag: "Speaking",
     date: "Sep 2023"
   },
@@ -273,7 +295,7 @@ export default function App() {
     id: "award_saram",
     title: "2nd Prize – SARAM Expo 2025 ('Mann AI')",
     description: "Receiving the 2nd Prize (₹25,000) for Mann AI mental health platform.",
-    image: "/images/award-saram-expo.jpg",
+    image: publicAsset("images/award-saram-expo.jpg"),
     tag: "Competition",
     date: "Jan 2025"
   },
@@ -282,7 +304,7 @@ export default function App() {
     id: "award_oral",
     title: "2nd Place – National Oral Research Presentation",
     description: "Recognized for presenting research at the college symposium.",
-    image: "/images/award-oral-presentation.jpg",
+    image: publicAsset("images/award-oral-presentation.jpg"),
     tag: "Research",
     date: "Oct 2023"
   },
@@ -291,7 +313,7 @@ export default function App() {
     id: "gallery_ai_cyberquest",
     title: "CyberQuest AI Hackathon",
     description: "Building AI-powered solutions during the hackathon.",
-    image: "/images/gallery-ai-cyberquest.jpg",
+    image: publicAsset("images/gallery-ai-cyberquest.jpg"),
     tag: "Hackathon",
     date: "Feb 2025"
   },
@@ -300,7 +322,7 @@ export default function App() {
     id: "gallery_climate_change_speaker",
     title: "Climate Change Awareness Speaker",
     description: "Delivering a talk on climate change and sustainability.",
-    image: "/images/gallery-climate-change-speaker.jpg",
+    image: publicAsset("images/gallery-climate-change-speaker.jpg"),
     tag: "Speaking",
     date: "May 2024"
   },
@@ -309,7 +331,7 @@ export default function App() {
     id: "gallery_first_hackathon",
     title: "First Hackathon",
     description: "My first college hackathon experience.",
-    image: "/images/gallery-first-hackathon.jpg",
+    image: publicAsset("images/gallery-first-hackathon.jpg"),
     tag: "Hackathon",
     date: "Dec 2023"
   },
@@ -318,7 +340,7 @@ export default function App() {
     id: "gallery_google_girl_hackathon",
     title: "Google Girl Hackathon",
     description: "Participating in Google's Girl Hackathon.",
-    image: "/images/gallery-google-girl-hackathon.jpg",
+    image: publicAsset("images/gallery-google-girl-hackathon.jpg"),
     tag: "Hackathon",
     date: "Mar 2025"
   },
@@ -327,7 +349,7 @@ export default function App() {
     id: "gallery_intellects_club",
     title: "Intellects Club",
     description: "Leading events and workshops as Vice President.",
-    image: "/images/gallery-intellects-club.jpg",
+    image: publicAsset("images/gallery-intellects-club.jpg"),
     tag: "Leadership",
     date: "2024"
   },
@@ -336,7 +358,7 @@ export default function App() {
     id: "gallery_launchpad_event",
     title: "LaunchPad Event",
     description: "Presenting the Mann AI platform.",
-    image: "/images/gallery-launchpad-event.jpg",
+    image: publicAsset("images/gallery-launchpad-event.jpg"),
     tag: "Competition",
     date: "Feb 2025"
   },
@@ -345,7 +367,7 @@ export default function App() {
     id: "gallery_medals",
     title: "Academic & Technical Medals",
     description: "Collection of medals from competitions.",
-    image: "/images/gallery-medals.jpg",
+    image: publicAsset("images/gallery-medals.jpg"),
     tag: "Achievements",
     date: "2023–2026"
   },
@@ -354,7 +376,7 @@ export default function App() {
     id: "gallery_ngo_event",
     title: "NGO Event",
     description: "Volunteering through NSS.",
-    image: "/images/gallery-ngo-event.jpg",
+    image: publicAsset("images/gallery-ngo-event.jpg"),
     tag: "Volunteering",
     date: "2024"
   },
@@ -363,7 +385,7 @@ export default function App() {
     id: "gallery_ngo_work",
     title: "NGO Work",
     description: "Community outreach and volunteering activities.",
-    image: "/images/gallery-ngo-work.jpg",
+    image: publicAsset("images/gallery-ngo-work.jpg"),
     tag: "Volunteering",
     date: "2025"
   },
@@ -372,7 +394,7 @@ export default function App() {
     id: "gallery_project_day",
     title: "Project Day",
     description: "Presenting the project during Project Day.",
-    image: "/images/gallery-project-day.jpg",
+    image: publicAsset("images/gallery-project-day.jpg"),
     tag: "Competition",
     date: "May 2026"
   },
@@ -381,7 +403,7 @@ export default function App() {
     id: "gallery_promptkraft_speaker",
     title: "PromptKraft Workshop",
     description: "Conducting a Prompt Engineering workshop.",
-    image: "/images/gallery-promptkraft-speaker.jpg",
+    image: publicAsset("images/gallery-promptkraft-speaker.jpg"),
     tag: "Speaking",
     date: "Apr 2025"
   },
@@ -390,7 +412,7 @@ export default function App() {
     id: "gallery_receiving_speech_award",
     title: "Receiving Speech Award",
     description: "Receiving the first-place oratorical award.",
-    image: "/images/gallery-receiving-speech-award.jpg",
+    image: publicAsset("images/gallery-receiving-speech-award.jpg"),
     tag: "Speaking",
     date: "Sep 2023"
   },
@@ -399,7 +421,7 @@ export default function App() {
     id: "gallery_speaker_again",
     title: "Guest Speaker",
     description: "Delivering another invited technical session.",
-    image: "/images/gallery-speaker-again.jpg",
+    image: publicAsset("images/gallery-speaker-again.jpg"),
     tag: "Speaking",
     date: "2024"
   },
@@ -408,7 +430,7 @@ export default function App() {
     id: "gallery_speaking_always",
     title: "Public Speaking",
     description: "Regular invited talks and seminars.",
-    image: "/images/gallery-speaking-always.jpg",
+    image: publicAsset("images/gallery-speaking-always.jpg"),
     tag: "Speaking",
     date: "2025"
   },
@@ -417,7 +439,7 @@ export default function App() {
     id: "gallery_student_interaction",
     title: "Student Interaction",
     description: "Interacting with students during workshops.",
-    image: "/images/gallery-student-interaction.jpg",
+    image: publicAsset("images/gallery-student-interaction.jpg"),
     tag: "Leadership",
     date: "2025"
   },
@@ -426,7 +448,7 @@ export default function App() {
     id: "gallery_texus_speaker",
     title: "Texus Speaker",
     description: "Speaker at TEXUS technical event.",
-    image: "/images/gallery-texus-speaker.jpg",
+    image: publicAsset("images/gallery-texus-speaker.jpg"),
     tag: "Speaking",
     date: "2025"
   },
@@ -435,7 +457,7 @@ export default function App() {
     id: "gallery_trophies",
     title: "Trophies",
     description: "Collection of trophies earned over the years.",
-    image: "/images/gallery-trophies.jpg",
+    image: publicAsset("images/gallery-trophies.jpg"),
     tag: "Achievements",
     date: "2023–2026"
   },
@@ -444,7 +466,7 @@ export default function App() {
     id: "gallery_web_dev_speaker",
     title: "Web Development Workshop",
     description: "Teaching Web Development to students.",
-    image: "/images/gallery-web-dev-speaker.jpg",
+    image: publicAsset("images/gallery-web-dev-speaker.jpg"),
     tag: "Speaking",
     date: "2024"
   },
@@ -453,7 +475,7 @@ export default function App() {
     id: "gallery_winning_project_day",
     title: "Winning Project Day",
     description: "Celebrating the Project Day victory.",
-    image: "/images/gallery-winning-project-day.jpg",
+    image: publicAsset("images/gallery-winning-project-day.jpg"),
     tag: "Competition",
     date: "May 2026"
   },
@@ -462,7 +484,7 @@ export default function App() {
     id: "gallery_with_team",
     title: "With Team",
     description: "Team photograph with Intellects Club members.",
-    image: "/images/gallery-with-team.jpg",
+    image: publicAsset("images/gallery-with-team.jpg"),
     tag: "Leadership",
     date: "2024"
   },
@@ -471,7 +493,7 @@ export default function App() {
     id: "gallery_working",
     title: "Working Session",
     description: "Developing projects and collaborating with the team.",
-    image: "/images/gallery-working.jpg",
+    image: publicAsset("images/gallery-working.jpg"),
     tag: "Engineering",
     date: "Ongoing"
   }
@@ -1586,7 +1608,7 @@ export default function App() {
                             alt={item.title} 
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                             onError={(e) => {
-                              (e.currentTarget as HTMLImageElement).src = item.fallback;
+                              useFallbackImage(e, item.fallback);
                             }}
                             referrerPolicy="no-referrer"
                           />
@@ -1674,7 +1696,7 @@ export default function App() {
                           alt={galleryItems[selectedGalleryImage].title}
                           className="max-h-[50vh] md:max-h-[80vh] w-full object-contain"
                           onError={(e) => {
-                            (e.currentTarget as HTMLImageElement).src = galleryItems[selectedGalleryImage].fallback;
+                            useFallbackImage(e, galleryItems[selectedGalleryImage].fallback);
                           }}
                           referrerPolicy="no-referrer"
                         />
